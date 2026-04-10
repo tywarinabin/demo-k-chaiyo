@@ -4,8 +4,39 @@
   align-items: center;
   padding-top: 5rem;
   padding-bottom: 3rem;
-  background: #fff;
+  background: linear-gradient(170deg, #fff 0%, var(--secondary-light, #DBEAFE) 50%, #fff 100%);
   overflow: hidden;
+  position: relative;
+}
+
+.hero-bg-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  &::before {
+    content: '?';
+    position: absolute;
+    top: 10%;
+    right: 8%;
+    font-size: 12rem;
+    font-weight: 900;
+    color: var(--primary);
+    opacity: 0.03;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  &::after {
+    content: '?';
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--secondary, #2563EB);
+    opacity: 0.04;
+    font-family: 'Poppins', sans-serif;
+  }
 }
 
 .hero-container {
@@ -16,9 +47,11 @@
   align-items: center;
   gap: 4rem;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
-/* ── Text Content ── */
+/* -- Text Content -- */
 .hero-content {
   flex: 1;
   min-width: 0;
@@ -28,8 +61,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: var(--primary-light);
-  color: var(--primary);
+  background: var(--secondary-light, #DBEAFE);
+  color: var(--secondary, #2563EB);
   font-weight: 600;
   font-size: 0.85rem;
   padding: 0.4rem 1rem;
@@ -50,21 +83,19 @@
   margin: 0 0 1.25rem;
   letter-spacing: -0.03em;
 
-  .highlight {
-    color: var(--primary);
-    position: relative;
+  .highlight-q {
+    color: var(--secondary, #2563EB);
+    font-size: 3.5rem;
+    font-weight: 900;
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 4px;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: var(--primary-light);
-      border-radius: 4px;
-      z-index: -1;
-    }
+  .highlight {
+    display: block;
+    background: linear-gradient(135deg, var(--primary), var(--secondary, #2563EB));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
   }
 }
 
@@ -76,12 +107,12 @@
   max-width: 520px;
 
   strong {
-    color: var(--text-dark);
+    color: var(--secondary, #2563EB);
     font-weight: 600;
   }
 }
 
-/* ── Action Buttons ── */
+/* -- Action Buttons -- */
 .hero-actions {
   display: flex;
   align-items: center;
@@ -94,14 +125,14 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 2rem;
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--secondary, #2563EB));
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
   border-radius: var(--radius);
   text-decoration: none;
   transition: var(--transition);
-  border: 2px solid var(--primary);
+  border: none;
   cursor: pointer;
 
   i {
@@ -109,10 +140,9 @@
   }
 
   &:hover {
-    background: var(--primary-hover);
-    border-color: var(--primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+    filter: brightness(1.05);
   }
 }
 
@@ -122,12 +152,12 @@
   gap: 0.5rem;
   padding: 0.85rem 2rem;
   background: transparent;
-  color: var(--primary);
+  color: var(--secondary, #2563EB);
   font-weight: 600;
   font-size: 1rem;
   border-radius: var(--radius);
   text-decoration: none;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--secondary, #2563EB);
   transition: var(--transition);
 
   i {
@@ -135,12 +165,12 @@
   }
 
   &:hover {
-    background: var(--primary-light);
+    background: var(--secondary-light, #DBEAFE);
     transform: translateY(-2px);
   }
 }
 
-/* ── Countdown ── */
+/* -- Countdown -- */
 .hero-countdown {
   display: flex;
   gap: 1rem;
@@ -150,18 +180,23 @@
 .countdown-box {
   min-width: 70px;
   text-align: center;
-  background: var(--primary-light);
+  background: white;
+  border: 1.5px solid var(--secondary-light, #DBEAFE);
   border-radius: 12px;
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
 }
 
 .countdown-number {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--secondary, #2563EB));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.2;
 }
 
@@ -174,7 +209,7 @@
   margin-top: 2px;
 }
 
-/* ── Stats Row ── */
+/* -- Stats Row -- */
 .hero-stats {
   display: flex;
   gap: 2.5rem;
@@ -182,7 +217,7 @@
 
 .stat {
   padding-left: 1rem;
-  border-left: 3px solid var(--primary);
+  border-left: 3px solid var(--secondary, #2563EB);
 
   strong {
     display: block;
@@ -199,7 +234,7 @@
   }
 }
 
-/* ── Illustration ── */
+/* -- Illustration -- */
 .hero-illustration {
   flex: 1;
   display: flex;
@@ -213,24 +248,24 @@
   max-width: 440px;
   aspect-ratio: 1 / 1;
   border-radius: 2rem;
-  background: linear-gradient(135deg, var(--primary) 0%, #a78bfa 50%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary, #2563EB) 50%, var(--accent, #06B6D4) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
 
   &::before {
     content: '';
     position: absolute;
     inset: -20px;
     border-radius: 2.5rem;
-    background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
     z-index: -1;
   }
 }
 
-/* ── Illustration Icons ── */
+/* -- Illustration Icons -- */
 .illustration-icons {
   position: relative;
   width: 100%;
@@ -250,7 +285,7 @@
 
   i {
     font-size: 2rem;
-    color: var(--primary);
+    color: var(--secondary, #2563EB);
   }
 }
 
@@ -259,18 +294,68 @@
   left: 50%;
   transform: translateX(-50%);
   animation: float-1 3s ease-in-out infinite;
+
+  i { color: var(--primary); }
 }
 
 .icon-truck {
   bottom: 25%;
   left: 12%;
   animation: float-2 3.5s ease-in-out infinite;
+
+  i { color: var(--secondary, #2563EB); }
 }
 
 .icon-bag {
   bottom: 25%;
   right: 12%;
   animation: float-3 4s ease-in-out infinite;
+
+  i { color: var(--accent, #06B6D4); }
+}
+
+/* -- Floating Question Marks -- */
+.question-float {
+  position: absolute;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.q1 {
+  top: 8%;
+  right: 15%;
+  font-size: 2.5rem;
+  animation: float-q1 4s ease-in-out infinite;
+}
+
+.q2 {
+  bottom: 15%;
+  left: 25%;
+  font-size: 1.8rem;
+  animation: float-q2 3.5s ease-in-out infinite 0.5s;
+}
+
+.q3 {
+  top: 40%;
+  right: 8%;
+  font-size: 3rem;
+  animation: float-q3 5s ease-in-out infinite 1s;
+}
+
+@keyframes float-q1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.25; }
+  50% { transform: translateY(-10px) rotate(10deg); opacity: 0.4; }
+}
+
+@keyframes float-q2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+  50% { transform: translateY(-8px) rotate(-8deg); opacity: 0.35; }
+}
+
+@keyframes float-q3 {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
+  50% { transform: translateY(-12px) rotate(5deg); opacity: 0.3; }
 }
 
 @keyframes float-1 {
@@ -300,10 +385,14 @@
   }
 }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 @media (max-width: 992px) {
   .hero-headline {
     font-size: 2.5rem;
+
+    .highlight-q {
+      font-size: 2.75rem;
+    }
   }
 
   .hero-container {
@@ -339,6 +428,10 @@
 
   .hero-headline {
     font-size: 2.2rem;
+
+    .highlight-q {
+      font-size: 2.5rem;
+    }
   }
 
   .hero-subheading {
@@ -376,11 +469,24 @@
       font-size: 1.4rem;
     }
   }
+
+  .hero-bg-decor {
+    &::before {
+      font-size: 8rem;
+    }
+    &::after {
+      font-size: 5rem;
+    }
+  }
 }
 
 @media (max-width: 480px) {
   .hero-headline {
     font-size: 1.85rem;
+
+    .highlight-q {
+      font-size: 2.1rem;
+    }
   }
 
   .hero-subheading {
@@ -417,7 +523,7 @@
     .stat {
       border-left: none;
       padding-left: 0;
-      border-bottom: 2px solid var(--primary-light);
+      border-bottom: 2px solid var(--secondary-light, #DBEAFE);
       padding-bottom: 0.75rem;
 
       &:last-child {

@@ -33,10 +33,22 @@
   font-size: 2.25rem;
   font-weight: 800;
   color: var(--text-dark, #1F2937);
-  margin: 0;
+  margin: 0 0 12px;
 }
 
-/* ── Slider ── */
+.title-q {
+  color: var(--secondary, #2563EB);
+  font-weight: 900;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted, #6B7280);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* -- Slider -- */
 .slider-wrapper {
   position: relative;
   display: flex;
@@ -80,9 +92,9 @@
   }
 
   &:hover {
-    background: var(--primary, #7C3AED);
+    background: var(--secondary, #2563EB);
     color: white;
-    border-color: var(--primary, #7C3AED);
+    border-color: var(--secondary, #2563EB);
     transform: scale(1.05);
   }
 }
@@ -106,20 +118,20 @@
   padding: 0;
 
   &.active {
-    background: var(--primary, #7C3AED);
+    background: linear-gradient(135deg, var(--primary, #7C3AED), var(--secondary, #2563EB));
     transform: scale(1.3);
   }
 
   &:hover:not(.active) {
-    background: #c4b5fd;
+    background: #93c5fd;
   }
 }
 
-/* ── Card ── */
+/* -- Card -- */
 .testimonial-card {
   background: #ffffff;
-  border: 1px solid #E5E7EB;
-  border-radius: var(--radius, 16px);
+  border: 1.5px solid #E5E7EB;
+  border-radius: 20px;
   padding: 2rem;
   position: relative;
   transition: var(--transition, all 0.3s ease);
@@ -127,16 +139,19 @@
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: var(--shadow, 0 10px 40px rgba(124, 58, 237, 0.12));
-    border-color: var(--primary, #7C3AED);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.1);
   }
+
+  &.card-accent-purple:hover { border-color: #7C3AED; }
+  &.card-accent-blue:hover { border-color: #2563EB; }
+  &.card-accent-cyan:hover { border-color: #06B6D4; }
 }
 
 .quote-mark {
   font-size: 4rem;
   line-height: 1;
-  color: var(--primary, #7C3AED);
-  opacity: 0.15;
+  color: var(--secondary, #2563EB);
+  opacity: 0.12;
   font-family: Georgia, serif;
   position: absolute;
   top: 0.75rem;
@@ -161,6 +176,12 @@
     font-size: 1rem;
     margin-right: 2px;
   }
+
+  i.far.fa-star {
+    color: #D1D5DB;
+    font-size: 1rem;
+    margin-right: 2px;
+  }
 }
 
 .testimonial-author {
@@ -173,7 +194,6 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--primary, #7C3AED);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -203,10 +223,11 @@
   i {
     font-size: 0.75rem;
     margin-right: 3px;
+    color: var(--secondary, #2563EB);
   }
 }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 @media (max-width: 1024px) {
   .slider-slide {
     min-width: 50%;

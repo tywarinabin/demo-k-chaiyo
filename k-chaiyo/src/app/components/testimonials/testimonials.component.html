@@ -2,7 +2,8 @@
   <div class="container">
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-comment-dots"></i> Early Buzz</span>
-      <h2 class="section-title">Hamra Early Supporters K Bhanchan?</h2>
+      <h2 class="section-title">Hamra Early Supporters K Bhanchan<span class="title-q">?</span></h2>
+      <p class="section-subtitle">Real people, real excitement — Nepal bhari ko supporters le K sochchan?</p>
     </div>
 
     <div class="slider-wrapper">
@@ -13,14 +14,15 @@
       <div class="slider-track-container">
         <div class="slider-track" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
           <div class="slider-slide" *ngFor="let testimonial of testimonials">
-            <div class="testimonial-card">
+            <div class="testimonial-card" [ngClass]="'card-accent-' + testimonial.accent">
               <div class="quote-mark">"</div>
               <p class="testimonial-quote">{{ testimonial.quote }}</p>
               <div class="testimonial-rating">
                 <i class="fas fa-star" *ngFor="let star of getStars(testimonial.rating)"></i>
+                <i class="far fa-star" *ngFor="let star of getEmptyStars(testimonial.rating)"></i>
               </div>
               <div class="testimonial-author">
-                <div class="avatar">{{ testimonial.initials }}</div>
+                <div class="avatar" [ngStyle]="{'background': testimonial.avatarColor}">{{ testimonial.initials }}</div>
                 <div class="author-info">
                   <h4 class="author-name">{{ testimonial.name }}</h4>
                   <span class="author-location"><i class="fas fa-location-dot"></i> {{ testimonial.location }}</span>

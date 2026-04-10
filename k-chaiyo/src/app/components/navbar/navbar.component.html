@@ -1,17 +1,37 @@
 <nav class="navbar" [class.scrolled]="isScrolled">
   <div class="navbar-container">
-    <!-- Logo -->
+    <!-- Logo with Colorful Cart -->
     <a href="#" class="logo">
-      <i class="fas fa-box"></i> K Chaiyo<span class="logo-accent">?</span>
+      <span class="logo-cart">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="url(#cartGrad)"/>
+          <path d="M9 10h2l1.5 8h8L23 12H12" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="13.5" cy="21" r="1.5" fill="#FFD700"/>
+          <circle cx="19.5" cy="21" r="1.5" fill="#FF6B6B"/>
+          <path d="M14 14h6" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="cartGrad" x1="0" y1="0" x2="32" y2="32">
+              <stop offset="0%" stop-color="#7C3AED"/>
+              <stop offset="50%" stop-color="#2563EB"/>
+              <stop offset="100%" stop-color="#06B6D4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      K Chaiyo<span class="logo-accent">?</span>
       <span class="coming-soon-badge">Coming Soon</span>
     </a>
 
     <!-- Desktop Nav Links -->
     <ul class="nav-links" [class.open]="menuOpen">
+      <li class="mobile-menu-header">
+        <span class="mobile-brand">K Chaiyo<span class="logo-accent">?</span></span>
+      </li>
       <li><a href="#products" (click)="closeMenu()"><i class="fas fa-box"></i> Products</a></li>
       <li><a href="#features" (click)="closeMenu()"><i class="fas fa-bolt"></i> Features</a></li>
       <li><a href="#how-it-works" (click)="closeMenu()"><i class="fas fa-route"></i> How It Works</a></li>
       <li><a href="#countdown" (click)="closeMenu()"><i class="fas fa-clock"></i> Countdown</a></li>
+      <li><a href="#testimonials" (click)="closeMenu()"><i class="fas fa-star"></i> Reviews</a></li>
       <li class="nav-cta-mobile">
         <button class="btn-cta" (click)="openWaitlist()"><i class="fas fa-bell"></i> Join Waitlist</button>
       </li>

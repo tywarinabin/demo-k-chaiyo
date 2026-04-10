@@ -1,17 +1,20 @@
-:host {
-  --primary: #7C3AED;
-  --primary-light: #EDE9FE;
-  --primary-bg: #F5F3FF;
-  --text-dark: #1F2937;
-  --text-muted: #6B7280;
-  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --radius: 16px;
-  --transition: all 0.3s ease;
-}
-
 .timeline-section {
   padding: 100px 0;
-  background: var(--primary-bg);
+  background: var(--secondary-light, #DBEAFE);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '?';
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(37, 99, 235, 0.04);
+    font-family: 'Poppins', sans-serif;
+    pointer-events: none;
+  }
 }
 
 .container {
@@ -27,8 +30,8 @@
 
 .section-tag {
   display: inline-block;
-  background: var(--primary-light);
-  color: var(--primary);
+  background: white;
+  color: var(--secondary, #2563EB);
   font-size: 0.875rem;
   font-weight: 600;
   padding: 6px 18px;
@@ -49,6 +52,11 @@
   line-height: 1.3;
 }
 
+.title-q {
+  color: var(--secondary, #2563EB);
+  font-weight: 900;
+}
+
 // Timeline layout
 .timeline {
   position: relative;
@@ -62,7 +70,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: var(--primary);
+  background: linear-gradient(180deg, var(--primary), var(--secondary, #2563EB));
   transform: translateX(-50%);
   border-radius: 2px;
 }
@@ -87,7 +95,7 @@
   transform: translateX(-50%);
   width: 44px;
   height: 44px;
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--secondary, #2563EB));
   color: #ffffff;
   border-radius: 50%;
   display: flex;
@@ -96,22 +104,23 @@
   font-size: 1.1rem;
   font-weight: 700;
   z-index: 2;
-  box-shadow: 0 0 0 6px var(--primary-bg), 0 4px 12px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 0 0 6px var(--secondary-light, #DBEAFE), 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 // Card styling
 .timeline-card {
   background: #ffffff;
-  border-radius: var(--radius);
-  padding: 32px 28px;
-  box-shadow: var(--shadow);
+  border-radius: 20px;
+  padding: 36px 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   width: calc(50% - 52px);
-  transition: var(--transition);
-  border: 1px solid #F3F4F6;
+  transition: var(--transition, all 0.3s ease);
+  border: 1.5px solid rgba(37, 99, 235, 0.1);
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(124, 58, 237, 0.15);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.12);
+    border-color: var(--secondary, #2563EB);
   }
 }
 
@@ -138,16 +147,25 @@
 .step-icon-circle {
   width: 56px;
   height: 56px;
-  background: var(--primary-light);
+  background: var(--secondary-light, #DBEAFE);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+  transition: var(--transition, all 0.3s ease);
 
   i {
     font-size: 1.5rem;
-    color: var(--primary);
+    color: var(--secondary, #2563EB);
+  }
+
+  .timeline-card:hover & {
+    background: var(--secondary, #2563EB);
+
+    i {
+      color: #fff;
+    }
   }
 }
 
@@ -168,7 +186,7 @@
 
 .step-description {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--text-muted, #6B7280);
   line-height: 1.65;
   margin: 0;
 }

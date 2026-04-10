@@ -1,6 +1,6 @@
 .countdown-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  background: linear-gradient(135deg, var(--secondary, #2563EB), var(--primary), var(--secondary-dark, #1E40AF));
   color: white;
   text-align: center;
   position: relative;
@@ -61,6 +61,12 @@
   margin-bottom: 12px;
 }
 
+.title-q {
+  color: #FFD700;
+  font-weight: 900;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
 .countdown-subtitle {
   font-size: 1.15rem;
   opacity: 0.9;
@@ -85,6 +91,12 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  transition: var(--transition, all 0.3s ease);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-4px);
+  }
 }
 
 .countdown-number {
@@ -139,8 +151,8 @@
 
   button {
     padding: 14px 28px;
-    background: white;
-    color: var(--primary);
+    background: #FFD700;
+    color: var(--text-dark);
     font-weight: 700;
     font-size: 1rem;
     border-radius: 0 12px 12px 0;
@@ -150,7 +162,8 @@
     white-space: nowrap;
 
     &:hover {
-      background: #f3f4f6;
+      background: #FFC107;
+      transform: scale(1.02);
     }
   }
 }

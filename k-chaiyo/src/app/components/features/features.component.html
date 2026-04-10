@@ -2,17 +2,18 @@
   <div class="container">
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-bolt"></i> Hamro Features</span>
-      <h2 class="section-title">Dami Features Aaaudai Chan!</h2>
+      <h2 class="section-title">Dami Features Aaaudai Chan<span class="title-q">?</span></h2>
+      <p class="section-subtitle">K banaudai chau bhanera sochiraako? Yesto features haru aaudai chan!</p>
     </div>
 
     <div class="features-grid">
-      <div class="feature-card" *ngFor="let feature of features">
-        <div class="feature-icon-circle">
-          <i [class]="feature.icon"></i>
+      <div class="feature-card" *ngFor="let feature of features" [ngClass]="'card-' + feature.accent">
+        <div class="feature-icon-circle" [ngStyle]="{'background': feature.iconBg}">
+          <i [class]="feature.icon" [ngStyle]="{'color': feature.iconColor}"></i>
         </div>
         <h3 class="feature-title">{{ feature.title }}</h3>
         <p class="feature-description">{{ feature.description }}</p>
-        <span class="coming-badge">Coming Soon</span>
+        <span class="coming-badge" [ngClass]="'badge-' + feature.accent">{{ feature.badge }}</span>
       </div>
     </div>
   </div>
