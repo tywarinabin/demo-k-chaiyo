@@ -1,20 +1,22 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { ModalService } from '../../services/modal.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-hero',
-  imports: [],
-  templateUrl: './hero.component.html',
-  styleUrl: './hero.component.scss'
+  selector: 'app-countdown',
+  imports: [FormsModule, NgIf],
+  templateUrl: './countdown.component.html',
+  styleUrl: './countdown.component.scss'
 })
-export class HeroComponent implements OnInit, OnDestroy {
+export class CountdownComponent implements OnInit, OnDestroy {
   launchDate = new Date('2027-04-10T00:00:00');
   days = 0;
   hours = 0;
   minutes = 0;
   seconds = 0;
+  email = '';
+  submitted = false;
   private intervalId: any;
-  modalService = inject(ModalService);
 
   ngOnInit() {
     this.updateCountdown();
@@ -34,7 +36,9 @@ export class HeroComponent implements OnInit, OnDestroy {
     this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
   }
 
-  openWaitlist() {
-    this.modalService.open();
+  onSubmit() {
+    if (this.email) {
+      this.submitted = true;
+    }
   }
 }

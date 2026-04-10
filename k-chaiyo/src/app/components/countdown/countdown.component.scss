@@ -1,0 +1,227 @@
+.countdown-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.decorative-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &::before {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -100px;
+  }
+
+  &::after {
+    width: 300px;
+    height: 300px;
+    bottom: -80px;
+    left: -80px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.countdown-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.countdown-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.9;
+  display: inline-block;
+}
+
+.countdown-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.countdown-subtitle {
+  font-size: 1.15rem;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.countdown-box {
+  min-width: 120px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown-number {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+.launch-date {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+.email-signup {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.email-form {
+  display: flex;
+  gap: 0;
+
+  input {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 12px 0 0 12px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    color: var(--text-dark);
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+  }
+
+  button {
+    padding: 14px 28px;
+    background: white;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0 12px 12px 0;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+
+    &:hover {
+      background: #f3f4f6;
+    }
+  }
+}
+
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  i {
+    font-size: 2.5rem;
+    opacity: 0.95;
+  }
+
+  p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+  }
+}
+
+@media (max-width: 768px) {
+  .countdown-section {
+    padding: 70px 0;
+  }
+
+  .countdown-grid {
+    gap: 12px;
+  }
+
+  .countdown-box {
+    min-width: 70px;
+    padding: 16px 12px;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .countdown-label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-grid {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .countdown-box {
+    min-width: 60px;
+    padding: 14px 10px;
+  }
+
+  .countdown-number {
+    font-size: 1.75rem;
+  }
+
+  .email-form {
+    flex-direction: column;
+    gap: 12px;
+
+    input {
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    button {
+      border-radius: 12px;
+    }
+  }
+}

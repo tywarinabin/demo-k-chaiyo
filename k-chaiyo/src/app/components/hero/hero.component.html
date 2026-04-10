@@ -2,48 +2,81 @@
   <div class="hero-container">
     <!-- Left: Text Content -->
     <div class="hero-content">
-      <span class="hero-badge">Namaste! Welcome to K Chaiyo?</span>
+      <span class="hero-badge">
+        <i class="fas fa-rocket"></i> Launching Soon in Nepal!
+      </span>
 
       <h1 class="hero-headline">
-        Timro Mann Ma
-        <span class="highlight">K Chaiyo?</span>
+        K Chaiyo?
+        <span class="highlight">Aaaudai Cha!</span>
       </h1>
 
       <p class="hero-subheading">
-        From trending gadgets to daily essentials &mdash; we deliver everything
-        to your doorstep across Nepal.
-        <strong>Ekdam sajilo, ekdam chito!</strong>
+        Nepal ko sabai bhanda ramro delivery platform banaudai chau!
+        Trending gadgets, fashion, home essentials &mdash; sabai kura timro ghar samma.
+        <strong>Get ready for something dami!</strong>
       </p>
 
       <div class="hero-actions">
-        <a href="#features" class="btn-primary">Explore Now</a>
-        <a href="#how-it-works" class="btn-outline">
-          Hernus Kasto Cha
-          <span class="btn-outline-sub">See How It Works</span>
+        <button class="btn-primary" (click)="openWaitlist()">
+          <i class="fas fa-bell"></i> Join the Waitlist
+        </button>
+        <a href="#products" class="btn-outline">
+          <i class="fas fa-arrow-down"></i> See What's Coming
         </a>
+      </div>
+
+      <!-- Mini Countdown -->
+      <div class="hero-countdown">
+        <div class="countdown-box">
+          <span class="countdown-number">{{ days }}</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number">{{ hours }}</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number">{{ minutes }}</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number">{{ seconds }}</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
       </div>
 
       <!-- Stats Row -->
       <div class="hero-stats">
         <div class="stat">
-          <strong>10K+</strong>
-          <span>Happy Customers</span>
+          <strong>5,000+</strong>
+          <span>On Waitlist</span>
         </div>
         <div class="stat">
-          <strong>50+</strong>
-          <span>Cities</span>
+          <strong>75+</strong>
+          <span>Districts</span>
         </div>
         <div class="stat">
-          <strong>24/7</strong>
-          <span>Support</span>
+          <strong>2027</strong>
+          <span>Launching</span>
         </div>
       </div>
     </div>
 
-    <!-- Right: Illustration Placeholder -->
+    <!-- Right: Illustration -->
     <div class="hero-illustration">
       <div class="illustration-box">
-        <span class="illustration-emoji">📦</span>
+        <div class="illustration-icons">
+          <div class="icon-circle icon-package">
+            <i class="fas fa-box"></i>
+          </div>
+          <div class="icon-circle icon-truck">
+            <i class="fas fa-truck"></i>
+          </div>
+          <div class="icon-circle icon-bag">
+            <i class="fas fa-bag-shopping"></i>
+          </div>
+        </div>
       </div>
     </div>
   </div>

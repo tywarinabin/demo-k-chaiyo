@@ -34,6 +34,10 @@
   border-radius: 999px;
   margin-bottom: 16px;
   letter-spacing: 0.5px;
+
+  i {
+    margin-right: 4px;
+  }
 }
 
 .section-title {
@@ -74,11 +78,11 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
-}
 
-.feature-icon {
-  font-size: 1.75rem;
-  line-height: 1;
+  i {
+    font-size: 1.8rem;
+    color: var(--primary);
+  }
 }
 
 .feature-title {
@@ -93,6 +97,17 @@
   color: var(--text-muted);
   line-height: 1.65;
   margin: 0;
+}
+
+.coming-badge {
+  display: inline-block;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin-top: 12px;
 }
 
 // Tablet: 2 columns

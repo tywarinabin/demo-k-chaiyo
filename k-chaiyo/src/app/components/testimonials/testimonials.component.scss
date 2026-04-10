@@ -23,6 +23,10 @@
   font-weight: 600;
   margin-bottom: 0.75rem;
   letter-spacing: 0.025em;
+
+  i {
+    margin-right: 4px;
+  }
 }
 
 .section-title {
@@ -77,9 +81,9 @@
 .testimonial-rating {
   margin-bottom: 1.25rem;
 
-  .star {
+  i.fa-star {
     color: #F59E0B;
-    font-size: 1.125rem;
+    font-size: 1rem;
     margin-right: 2px;
   }
 }

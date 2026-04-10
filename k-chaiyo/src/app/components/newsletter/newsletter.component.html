@@ -1,0 +1,31 @@
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="newsletter-text">
+        <i class="fas fa-bell newsletter-icon"></i>
+        <div>
+          <h3 class="newsletter-title">Pahilo Khabar Paau!</h3>
+          <p class="newsletter-subtitle">Sign up for early access and exclusive launch offers.</p>
+        </div>
+      </div>
+
+      <div class="newsletter-action" *ngIf="!submitted">
+        <form class="email-form" (ngSubmit)="onSubmit()">
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+          <button type="submit">Notify Me</button>
+        </form>
+      </div>
+
+      <div class="newsletter-success" *ngIf="submitted">
+        <i class="fas fa-check"></i>
+        <span>You're in! We'll keep you updated.</span>
+      </div>
+    </div>
+  </div>
+</section>

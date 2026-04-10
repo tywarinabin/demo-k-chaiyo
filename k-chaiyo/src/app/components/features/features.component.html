@@ -1,17 +1,18 @@
 <section id="features" class="features-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Hamro Features</span>
-      <h2 class="section-title">Dami Features, Dami Service!</h2>
+      <span class="section-tag"><i class="fas fa-bolt"></i> Hamro Features</span>
+      <h2 class="section-title">Dami Features Aaaudai Chan!</h2>
     </div>
 
     <div class="features-grid">
       <div class="feature-card" *ngFor="let feature of features">
         <div class="feature-icon-circle">
-          <span class="feature-icon">{{ feature.icon }}</span>
+          <i [class]="feature.icon"></i>
         </div>
         <h3 class="feature-title">{{ feature.title }}</h3>
         <p class="feature-description">{{ feature.description }}</p>
+        <span class="coming-badge">Coming Soon</span>
       </div>
     </div>
   </div>

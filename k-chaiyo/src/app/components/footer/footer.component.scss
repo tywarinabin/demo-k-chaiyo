@@ -26,6 +26,10 @@
   font-weight: 800;
   color: var(--primary, #7C3AED);
   margin: 0 0 0.75rem 0;
+
+  i {
+    margin-right: 6px;
+  }
 }
 
 .footer-description {
@@ -49,8 +53,12 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 1.1rem;
+  color: #ffffff;
   transition: var(--transition, all 0.3s ease);
+
+  i {
+    font-size: 1.1rem;
+  }
 
   &:hover {
     background: var(--primary, #7C3AED);
@@ -133,6 +141,17 @@
     margin: 0;
     font-size: 0.875rem;
     color: #9CA3AF;
+  }
+
+  .launch-note {
+    font-weight: 600;
+    color: var(--primary, #7C3AED);
+  }
+
+  i.fa-heart {
+    color: var(--primary, #7C3AED);
+    font-size: 0.875rem;
+    vertical-align: middle;
   }
 }
 

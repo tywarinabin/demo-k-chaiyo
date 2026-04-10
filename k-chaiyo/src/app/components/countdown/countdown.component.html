@@ -1,0 +1,49 @@
+<section id="countdown" class="countdown-section">
+  <div class="decorative-shapes"></div>
+  <div class="container">
+    <div class="countdown-content">
+      <i class="fas fa-clock countdown-icon"></i>
+      <h2 class="countdown-title">Hamro Grand Launch Countdown!</h2>
+      <p class="countdown-subtitle">We're building something ekdam dami for Nepal. Mark your calendars!</p>
+
+      <div class="countdown-grid">
+        <div class="countdown-box">
+          <span class="countdown-number">{{ days }}</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number">{{ hours }}</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number">{{ minutes }}</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number">{{ seconds }}</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+
+      <p class="launch-date"><i class="fas fa-calendar"></i> Launch Date: April 10, 2027</p>
+
+      <div class="email-signup" *ngIf="!submitted">
+        <form class="email-form" (ngSubmit)="onSubmit()">
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+          />
+          <button type="submit">Notify Me</button>
+        </form>
+      </div>
+
+      <div class="success-message" *ngIf="submitted">
+        <i class="fas fa-circle-check"></i>
+        <p>Dhanyabad! We'll notify you on launch day!</p>
+      </div>
+    </div>
+  </div>
+</section>

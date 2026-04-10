@@ -35,6 +35,10 @@
   border-radius: 999px;
   margin-bottom: 16px;
   letter-spacing: 0.5px;
+
+  i {
+    margin-right: 4px;
+  }
 }
 
 .section-title {
@@ -140,6 +144,11 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+
+  i {
+    font-size: 1.5rem;
+    color: var(--primary);
+  }
 }
 
 .step-left .step-icon-circle {
@@ -148,11 +157,6 @@
 
 .step-right .step-icon-circle {
   margin-right: auto;
-}
-
-.step-icon {
-  font-size: 1.6rem;
-  line-height: 1;
 }
 
 .step-title {
@@ -227,7 +231,7 @@
     height: 48px;
   }
 
-  .step-icon {
+  .step-icon-circle i {
     font-size: 1.4rem;
   }
 }

@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,7 @@ import { Component, HostListener } from '@angular/core';
 export class NavbarComponent {
   isScrolled = false;
   menuOpen = false;
+  modalService = inject(ModalService);
 
   @HostListener('window:scroll')
   onScroll() {
@@ -21,5 +23,10 @@ export class NavbarComponent {
 
   closeMenu() {
     this.menuOpen = false;
+  }
+
+  openWaitlist() {
+    this.closeMenu();
+    this.modalService.open();
   }
 }

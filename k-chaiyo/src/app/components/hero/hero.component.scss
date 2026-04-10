@@ -25,7 +25,9 @@
 }
 
 .hero-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   background: var(--primary-light);
   color: var(--primary);
   font-weight: 600;
@@ -34,6 +36,10 @@
   border-radius: 100px;
   margin-bottom: 1.5rem;
   letter-spacing: 0.02em;
+
+  i {
+    font-size: 1rem;
+  }
 }
 
 .hero-headline {
@@ -80,11 +86,13 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.85rem 2rem;
   background: var(--primary);
   color: #fff;
@@ -94,6 +102,11 @@
   text-decoration: none;
   transition: var(--transition);
   border: 2px solid var(--primary);
+  cursor: pointer;
+
+  i {
+    font-size: 1.1rem;
+  }
 
   &:hover {
     background: var(--primary-hover);
@@ -105,9 +118,9 @@
 
 .btn-outline {
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
-  padding: 0.75rem 2rem;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
   background: transparent;
   color: var(--primary);
   font-weight: 600;
@@ -116,23 +129,49 @@
   text-decoration: none;
   border: 2px solid var(--primary);
   transition: var(--transition);
-  line-height: 1.3;
 
-  .btn-outline-sub {
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    transition: var(--transition);
+  i {
+    font-size: 1.1rem;
   }
 
   &:hover {
     background: var(--primary-light);
     transform: translateY(-2px);
-
-    .btn-outline-sub {
-      color: var(--primary);
-    }
   }
+}
+
+/* ── Countdown ── */
+.hero-countdown {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.countdown-box {
+  min-width: 70px;
+  text-align: center;
+  background: var(--primary-light);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
 }
 
 /* ── Stats Row ── */
@@ -160,7 +199,7 @@
   }
 }
 
-/* ── Illustration Placeholder ── */
+/* ── Illustration ── */
 .hero-illustration {
   flex: 1;
   display: flex;
@@ -191,18 +230,73 @@
   }
 }
 
-.illustration-emoji {
-  font-size: 6rem;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
-  animation: float 3s ease-in-out infinite;
+/* ── Illustration Icons ── */
+.illustration-icons {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-@keyframes float {
+.icon-circle {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  i {
+    font-size: 2rem;
+    color: var(--primary);
+  }
+}
+
+.icon-package {
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: float-1 3s ease-in-out infinite;
+}
+
+.icon-truck {
+  bottom: 25%;
+  left: 12%;
+  animation: float-2 3.5s ease-in-out infinite;
+}
+
+.icon-bag {
+  bottom: 25%;
+  right: 12%;
+  animation: float-3 4s ease-in-out infinite;
+}
+
+@keyframes float-1 {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateX(-50%) translateY(-12px);
+  }
+}
+
+@keyframes float-2 {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes float-3 {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-5deg);
   }
 }
 
@@ -218,6 +312,15 @@
 
   .illustration-box {
     max-width: 340px;
+  }
+
+  .icon-circle {
+    width: 65px;
+    height: 65px;
+
+    i {
+      font-size: 1.6rem;
+    }
   }
 }
 
@@ -248,6 +351,10 @@
     flex-wrap: wrap;
   }
 
+  .hero-countdown {
+    justify-content: center;
+  }
+
   .hero-stats {
     justify-content: center;
     gap: 1.5rem;
@@ -261,8 +368,13 @@
     max-width: 280px;
   }
 
-  .illustration-emoji {
-    font-size: 4.5rem;
+  .icon-circle {
+    width: 55px;
+    height: 55px;
+
+    i {
+      font-size: 1.4rem;
+    }
   }
 }
 
@@ -284,6 +396,16 @@
       width: 100%;
       text-align: center;
       justify-content: center;
+    }
+  }
+
+  .hero-countdown {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    .countdown-box {
+      min-width: 60px;
+      padding: 10px 12px;
     }
   }
 

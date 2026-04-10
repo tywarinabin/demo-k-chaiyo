@@ -2,6 +2,7 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item" *ngFor="let stat of stats">
+        <i [class]="stat.icon"></i>
         <div class="stat-value">{{ stat.value }}</div>
         <div class="stat-label">{{ stat.label }}</div>
       </div>

@@ -1,0 +1,20 @@
+<section id="products" class="products-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-eye"></i> Sneak Peek</span>
+      <h2 class="section-title">K Huda Paincha?</h2>
+      <p class="section-subtitle">Here's a preview of categories we're preparing for you</p>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card" *ngFor="let cat of categories">
+        <div class="icon-circle">
+          <i [class]="cat.icon"></i>
+        </div>
+        <h3 class="card-title">{{ cat.title }}</h3>
+        <p class="card-description">{{ cat.description }}</p>
+        <span class="coming-soon-tag">{{ cat.tag }}</span>
+      </div>
+    </div>
+  </div>
+</section>

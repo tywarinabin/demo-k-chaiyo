@@ -1,14 +1,21 @@
 <section id="cta" class="cta-section">
   <div class="cta-bg-shapes"></div>
   <div class="container">
-    <h2 class="cta-title">Ready to Shop? Aaja Nai Suru Gara!</h2>
+    <div class="cta-top-icon">
+      <i class="fas fa-rocket"></i>
+    </div>
+    <h2 class="cta-title">Don't Miss the Launch!</h2>
     <p class="cta-subtitle">
-      Join thousands of happy Nepalis who trust K Chaiyo? for their daily needs.
-      Free delivery on your first order!
+      Join thousands of Nepalis on our waitlist. Be the first to experience
+      K Chaiyo? when we go live in April 2027!
     </p>
     <div class="cta-buttons">
-      <a href="#" class="btn btn-white">Get Started — It's Free</a>
-      <a href="#" class="btn btn-outline">Contact Us</a>
+      <button class="btn btn-white" (click)="openWaitlist()">
+        <i class="fas fa-bell"></i> Join Waitlist
+      </button>
+      <a href="#" class="btn btn-outline">
+        <i class="fab fa-instagram"></i> Follow Us
+      </a>
     </div>
   </div>
 </section>

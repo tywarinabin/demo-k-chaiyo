@@ -10,24 +10,24 @@ import { NgFor } from '@angular/common';
 export class FeaturesComponent {
   features = [
     {
-      icon: '✨',
+      icon: 'fas fa-wand-magic-sparkles',
       title: 'Trending Items',
-      description: 'Sabai bhanda naya ra trending items, curated just for you. Stay ahead of the game!'
+      description: 'Sabai bhanda naya ra trending items haru curate garinecha — timro lagi specially! Stay ahead of the game.'
     },
     {
-      icon: '🚚',
+      icon: 'fas fa-truck',
       title: 'Doorstep Delivery',
-      description: 'Gharmai delivery across Nepal — Kathmandu, Pokhara, Biratnagar, wherever you are!'
+      description: 'Nepal bhari gharmai delivery — Kathmandu, Pokhara, Biratnagar, jaha chau tyahai!'
     },
     {
-      icon: '📱',
+      icon: 'fas fa-mobile-screen',
       title: 'Easy Ordering',
-      description: 'Jhyap! Order in seconds. No hassle, no confusion. Ekdam sajilo process.'
+      description: 'Jhyap! Seconds mai order. No hassle, no confusion. Ekdam sajilo process hunecha.'
     },
     {
-      icon: '🔒',
+      icon: 'fas fa-shield-halved',
       title: 'Secure Payments',
-      description: 'eSewa, Khalti, bank transfer — pay your way, paisa safe!'
+      description: 'eSewa, Khalti, bank transfer — timro tarikale pay gara, paisa ekdam safe hunecha!'
     }
   ];
 }

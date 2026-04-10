@@ -2,22 +2,23 @@
   <div class="navbar-container">
     <!-- Logo -->
     <a href="#" class="logo">
-      🛒 K Chaiyo<span class="logo-accent">?</span>
+      <i class="fas fa-box"></i> K Chaiyo<span class="logo-accent">?</span>
+      <span class="coming-soon-badge">Coming Soon</span>
     </a>
 
     <!-- Desktop Nav Links -->
     <ul class="nav-links" [class.open]="menuOpen">
-      <li><a href="#features" (click)="closeMenu()">Features</a></li>
-      <li><a href="#how-it-works" (click)="closeMenu()">How It Works</a></li>
-      <li><a href="#reviews" (click)="closeMenu()">Reviews</a></li>
-      <li><a href="#impact" (click)="closeMenu()">Impact</a></li>
+      <li><a href="#products" (click)="closeMenu()"><i class="fas fa-box"></i> Products</a></li>
+      <li><a href="#features" (click)="closeMenu()"><i class="fas fa-bolt"></i> Features</a></li>
+      <li><a href="#how-it-works" (click)="closeMenu()"><i class="fas fa-route"></i> How It Works</a></li>
+      <li><a href="#countdown" (click)="closeMenu()"><i class="fas fa-clock"></i> Countdown</a></li>
       <li class="nav-cta-mobile">
-        <a href="#get-started" class="btn-cta" (click)="closeMenu()">Suru Garum!</a>
+        <button class="btn-cta" (click)="openWaitlist()"><i class="fas fa-bell"></i> Join Waitlist</button>
       </li>
     </ul>
 
     <!-- CTA Button (Desktop) -->
-    <a href="#get-started" class="btn-cta desktop-cta">Suru Garum!</a>
+    <button class="btn-cta desktop-cta" (click)="openWaitlist()"><i class="fas fa-bell"></i> Join Waitlist</button>
 
     <!-- Mobile Hamburger -->
     <button

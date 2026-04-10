@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-cta',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './cta.component.html',
   styleUrl: './cta.component.scss'
 })
-export class CtaComponent {}
+export class CtaComponent {
+  modalService = inject(ModalService);
+
+  openWaitlist() {
+    this.modalService.open();
+  }
+}

@@ -17,6 +17,13 @@
 
 .stat-item {
   padding: 1.5rem 1rem;
+
+  i {
+    font-size: 2rem;
+    color: var(--primary, #7C3AED);
+    margin-bottom: 8px;
+    display: inline-block;
+  }
 }
 
 .stat-value {

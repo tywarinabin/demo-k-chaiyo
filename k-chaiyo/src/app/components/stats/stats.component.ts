@@ -9,9 +9,9 @@ import { NgFor } from '@angular/common';
 })
 export class StatsComponent {
   stats = [
-    { value: '10,000+', label: 'Khushi Customers' },
-    { value: '50+', label: 'Cities Across Nepal' },
-    { value: '99.5%', label: 'Delivery Success Rate' },
-    { value: '24/7', label: 'Customer Support' }
+    { icon: 'fas fa-users', value: '5,000+', label: 'Waitlist Signups' },
+    { icon: 'fas fa-map-pin', value: '75+', label: 'Districts Targeted' },
+    { icon: 'fas fa-box', value: '100+', label: 'Products Planned' },
+    { icon: 'fas fa-heart', value: '1', label: 'Big Nepali Dream' }
   ];
 }

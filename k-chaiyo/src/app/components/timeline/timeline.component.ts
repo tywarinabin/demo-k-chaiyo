@@ -11,27 +11,27 @@ export class TimelineComponent {
   steps = [
     {
       number: 1,
-      icon: '🔍',
+      icon: 'fas fa-search',
       title: 'Browse & Discover',
-      description: 'Trending items hera, categories explore gara, ani mann pareko item pick gara!'
+      description: 'Trending items hernu hos, categories explore garnu hos, ani mann pareko item pick garnu hos!'
     },
     {
       number: 2,
-      icon: '🛒',
+      icon: 'fas fa-cart-shopping',
       title: 'Add to Cart',
-      description: 'Cart ma haal, quantity set gara — jhyap, that\'s it!'
+      description: 'Cart ma haalnu hos, quantity set garnu hos — jhyap, that\'s it!'
     },
     {
       number: 3,
-      icon: '💳',
+      icon: 'fas fa-credit-card',
       title: 'Place Your Order',
-      description: 'eSewa, Khalti, ya COD — timro convenience, timro choice!'
+      description: 'eSewa, Khalti, ya COD — timro convenience, timro choice hunecha!'
     },
     {
       number: 4,
-      icon: '📦',
+      icon: 'fas fa-box-open',
       title: 'Delivered to You!',
-      description: 'Gharmai aaucha! Sit back, relax, and wait for the doorbell. Dami, haina?'
+      description: 'Gharmai aauchha! Sit back, relax, and wait for the doorbell. Dami hunecha, haina?'
     }
   ];
 }

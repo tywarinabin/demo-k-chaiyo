@@ -64,6 +64,15 @@
   z-index: 1;
 }
 
+.cta-top-icon {
+  margin-bottom: 20px;
+
+  i {
+    font-size: 3rem;
+    color: #ffffff;
+  }
+}
+
 .cta-title {
   font-size: 2.5rem;
   font-weight: 800;
@@ -90,7 +99,9 @@
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.9rem 2rem;
   border-radius: var(--radius, 12px);
   font-size: 1rem;
@@ -150,5 +161,6 @@
     width: 100%;
     max-width: 280px;
     text-align: center;
+    justify-content: center;
   }
 }

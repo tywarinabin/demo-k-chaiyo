@@ -1,0 +1,132 @@
+.newsletter-section {
+  padding: 48px 0;
+  background: var(--primary-light);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.newsletter-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.newsletter-text {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.newsletter-icon {
+  font-size: 2rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.newsletter-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.newsletter-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.email-form {
+  display: flex;
+  gap: 0;
+
+  input {
+    padding: 12px 20px;
+    border-radius: 10px 0 0 10px;
+    border: 2px solid var(--primary);
+    min-width: 280px;
+    font-size: 0.95rem;
+    outline: none;
+    color: var(--text-dark);
+    background: white;
+    transition: var(--transition);
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+
+    &:focus {
+      border-color: var(--primary-dark);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    }
+  }
+
+  button {
+    padding: 12px 24px;
+    background: var(--primary);
+    color: white;
+    border-radius: 0 10px 10px 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid var(--primary);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+  }
+}
+
+.newsletter-success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+
+  i {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .newsletter-text {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .email-form {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+
+    input {
+      border-radius: 10px;
+      min-width: auto;
+      width: 100%;
+      border: 2px solid var(--primary);
+    }
+
+    button {
+      border-radius: 10px;
+      width: 100%;
+    }
+  }
+
+  .newsletter-success {
+    justify-content: center;
+  }
+}
