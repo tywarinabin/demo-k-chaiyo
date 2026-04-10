@@ -36,12 +36,86 @@
   margin: 0;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+/* ── Slider ── */
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
+.slider-track-container {
+  overflow: hidden;
+  flex: 1;
+  border-radius: 16px;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider-slide {
+  min-width: calc(100% / 3);
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.slider-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #e5e7eb;
+  background: white;
+  color: var(--text-dark, #1F2937);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition, all 0.3s ease);
+  flex-shrink: 0;
+
+  i {
+    font-size: 0.85rem;
+  }
+
+  &:hover {
+    background: var(--primary, #7C3AED);
+    color: white;
+    border-color: var(--primary, #7C3AED);
+    transform: scale(1.05);
+  }
+}
+
+.slider-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #e5e7eb;
+  cursor: pointer;
+  transition: var(--transition, all 0.3s ease);
+  padding: 0;
+
+  &.active {
+    background: var(--primary, #7C3AED);
+    transform: scale(1.3);
+  }
+
+  &:hover:not(.active) {
+    background: #c4b5fd;
+  }
+}
+
+/* ── Card ── */
 .testimonial-card {
   background: #ffffff;
   border: 1px solid #E5E7EB;
@@ -49,6 +123,7 @@
   padding: 2rem;
   position: relative;
   transition: var(--transition, all 0.3s ease);
+  height: 100%;
 
   &:hover {
     transform: translateY(-6px);
@@ -124,12 +199,17 @@
 .author-location {
   font-size: 0.85rem;
   color: var(--text-muted, #6B7280);
+
+  i {
+    font-size: 0.75rem;
+    margin-right: 3px;
+  }
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 1024px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .slider-slide {
+    min-width: 50%;
   }
 }
 
@@ -142,8 +222,16 @@
     font-size: 1.75rem;
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .slider-slide {
+    min-width: 100%;
+  }
+
+  .slider-arrow {
+    width: 36px;
+    height: 36px;
+
+    i {
+      font-size: 0.75rem;
+    }
   }
 }

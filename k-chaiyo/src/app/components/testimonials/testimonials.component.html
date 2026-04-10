@@ -5,21 +5,45 @@
       <h2 class="section-title">Hamra Early Supporters K Bhanchan?</h2>
     </div>
 
-    <div class="testimonials-grid">
-      <div class="testimonial-card" *ngFor="let testimonial of testimonials">
-        <div class="quote-mark">"</div>
-        <p class="testimonial-quote">{{ testimonial.quote }}</p>
-        <div class="testimonial-rating">
-          <i class="fas fa-star" *ngFor="let star of getStars(testimonial.rating)"></i>
-        </div>
-        <div class="testimonial-author">
-          <div class="avatar">{{ testimonial.initials }}</div>
-          <div class="author-info">
-            <h4 class="author-name">{{ testimonial.name }}</h4>
-            <span class="author-location">{{ testimonial.location }}</span>
+    <div class="slider-wrapper">
+      <button class="slider-arrow slider-arrow-left" (click)="prevSlide()" aria-label="Previous">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="slider-track-container">
+        <div class="slider-track" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+          <div class="slider-slide" *ngFor="let testimonial of testimonials">
+            <div class="testimonial-card">
+              <div class="quote-mark">"</div>
+              <p class="testimonial-quote">{{ testimonial.quote }}</p>
+              <div class="testimonial-rating">
+                <i class="fas fa-star" *ngFor="let star of getStars(testimonial.rating)"></i>
+              </div>
+              <div class="testimonial-author">
+                <div class="avatar">{{ testimonial.initials }}</div>
+                <div class="author-info">
+                  <h4 class="author-name">{{ testimonial.name }}</h4>
+                  <span class="author-location"><i class="fas fa-location-dot"></i> {{ testimonial.location }}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <button class="slider-arrow slider-arrow-right" (click)="nextSlide()" aria-label="Next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div class="slider-dots">
+      <button
+        *ngFor="let dot of getDots(); let i = index"
+        class="dot"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Go to slide ' + (i + 1)"
+      ></button>
     </div>
   </div>
 </section>

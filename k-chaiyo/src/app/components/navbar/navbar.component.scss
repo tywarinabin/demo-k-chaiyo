@@ -52,9 +52,29 @@
 }
 
 /* ── Coming Soon Badge ── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
 .coming-soon-badge {
   display: inline-block;
-  background: var(--primary);
+  background: linear-gradient(
+    110deg,
+    var(--primary) 0%,
+    var(--primary) 30%,
+    #a78bfa 45%,
+    #e9d5ff 50%,
+    #a78bfa 55%,
+    var(--primary) 70%,
+    var(--primary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
   color: #fff;
   font-size: 0.65rem;
   font-weight: 700;
@@ -65,6 +85,7 @@
   text-transform: uppercase;
   line-height: 1.4;
   white-space: nowrap;
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.4);
 }
 
 /* ── Font Awesome Icons ── */
@@ -210,6 +231,22 @@ i.fas, i.fab {
     pointer-events: none;
   }
 
+  .navbar-container {
+    justify-content: center;
+    gap: 0;
+    position: relative;
+  }
+
+  .logo {
+    position: absolute;
+    left: 1.5rem;
+  }
+
+  .hamburger {
+    position: absolute;
+    right: 1.5rem;
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -218,7 +255,7 @@ i.fas, i.fab {
     height: 100vh;
     background: #fff;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     padding: 5rem 2rem 2rem;
     gap: 0;
@@ -235,9 +272,11 @@ i.fas, i.fab {
       width: 100%;
       padding: 0.85rem 0;
       border-bottom: 1px solid #f3f4f6;
+      text-align: center;
 
       a {
         font-size: 1.05rem;
+        justify-content: center;
       }
     }
 
@@ -249,6 +288,7 @@ i.fas, i.fab {
       .btn-cta {
         width: 100%;
         text-align: center;
+        justify-content: center;
         padding: 0.75rem 1.5rem;
       }
     }

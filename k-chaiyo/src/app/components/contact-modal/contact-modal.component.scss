@@ -1,28 +1,52 @@
+/* ── Animations ── */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes checkCircleFill {
+  0% { stroke-dashoffset: 157; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes checkDraw {
+  0% { stroke-dashoffset: 50; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scaleBounce {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-10px) rotate(var(--rotation)) scale(1);
     opacity: 1;
+  }
+  100% {
+    transform: translateY(350px) rotate(calc(var(--rotation) + 720deg)) scale(0.3);
+    opacity: 0;
   }
 }
 
+@keyframes successFadeIn {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Overlay ── */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,70 +55,108 @@
   animation: fadeIn 0.2s ease;
 }
 
+/* ── Modal ── */
 .modal-content {
   background: white;
   border-radius: 20px;
-  padding: 40px;
-  max-width: 500px;
+  padding: 36px 32px;
+  max-width: 480px;
   width: 100%;
   position: relative;
   animation: slideUp 0.3s ease;
   max-height: 90vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+  top: 14px;
+  right: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  font-size: 1.1rem;
   cursor: pointer;
   color: var(--text-muted);
   transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 
   &:hover {
-    color: var(--text-dark);
+    color: #EF4444;
+    background: #FEF2F2;
+    border-color: #FCA5A5;
   }
 }
 
+/* ── Header ── */
 .modal-header {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .modal-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 
   i {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--primary);
   }
 }
 
 .modal-title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-dark);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .modal-subtitle {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.5;
 }
 
+/* ── Form ── */
 .form-group {
   margin-bottom: 16px;
+
+  &.has-error {
+    .input-wrapper input,
+    .input-wrapper textarea {
+      border-color: #EF4444;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+    }
+
+    .input-icon {
+      color: #EF4444;
+    }
+  }
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+
+  .required {
+    color: #EF4444;
+  }
+
+  .optional {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
 }
 
 .input-wrapper {
@@ -105,60 +167,73 @@
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.1rem;
-    color: var(--text-muted);
+    font-size: 0.95rem;
+    color: var(--text-light, #9CA3AF);
     pointer-events: none;
+    transition: color 0.2s ease;
   }
 
   input,
   textarea {
     width: 100%;
-    padding: 12px 12px 12px 40px;
+    padding: 11px 12px 11px 38px;
     border: 1.5px solid #e5e7eb;
     border-radius: 10px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: var(--transition);
     outline: none;
     font-family: inherit;
     color: var(--text-dark);
     box-sizing: border-box;
+    background: #fafafa;
 
     &::placeholder {
-      color: var(--text-muted);
+      color: #b0b7c3;
     }
 
     &:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px var(--primary-light);
+      background: #fff;
     }
+  }
+
+  &:focus-within .input-icon {
+    color: var(--primary);
   }
 
   textarea {
     resize: vertical;
-    min-height: 80px;
+    min-height: 72px;
   }
 }
 
 .textarea-wrapper {
   .input-icon {
-    top: 16px;
+    top: 14px;
     transform: none;
   }
 }
 
 .error-text {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #EF4444;
   margin-top: 4px;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  i {
+    font-size: 0.7rem;
+  }
 }
 
 .submit-btn {
   width: 100%;
-  padding: 14px 24px;
+  padding: 13px 24px;
   background: var(--primary);
   color: white;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   border: none;
   border-radius: 12px;
@@ -169,65 +244,162 @@
   justify-content: center;
   gap: 8px;
   margin-top: 8px;
+  letter-spacing: 0.01em;
 
   &:hover {
     background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 
   i {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
 }
 
+/* ── Success State ── */
 .modal-success {
   text-align: center;
-  padding: 20px 0;
+  padding: 16px 0 8px;
+  position: relative;
+}
 
-  .success-icon {
-    margin-bottom: 20px;
+.confetti-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
 
-    i {
-      font-size: 4rem;
-      color: var(--primary);
-    }
+.confetti-piece {
+  position: absolute;
+  top: -8px;
+  left: var(--x);
+  width: 8px;
+  height: 8px;
+  background: var(--color);
+  border-radius: 2px;
+  animation: confettiFall 2.5s ease-out var(--delay) forwards;
+  opacity: 0;
+  animation-fill-mode: both;
+
+  &:nth-child(odd) {
+    width: 6px;
+    height: 12px;
+    border-radius: 50%;
   }
 
-  .success-text {
-    font-size: 1rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-top: 8px;
-    margin-bottom: 24px;
+  &:nth-child(3n) {
+    width: 10px;
+    height: 6px;
+    border-radius: 1px;
   }
+}
+
+.success-checkmark {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+  animation: scaleBounce 0.5s ease forwards;
+}
+
+.check-circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.check-svg {
+  width: 80px;
+  height: 80px;
+}
+
+.check-circle-bg {
+  stroke: #10B981;
+  stroke-width: 2;
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  animation: checkCircleFill 0.6s ease 0.1s forwards;
+}
+
+.check-path {
+  stroke: #10B981;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: checkDraw 0.4s ease 0.5s forwards;
+}
+
+.success-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #10B981;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+  animation: successFadeIn 0.4s ease 0.6s both;
+}
+
+.modal-success .success-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 4px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+  animation: successFadeIn 0.4s ease 0.7s both;
 }
 
 .close-action-btn {
-  padding: 12px 32px;
-  background: var(--primary);
+  padding: 12px 28px;
+  background: #10B981;
   color: white;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+  animation: successFadeIn 0.4s ease 0.8s both;
 
   &:hover {
-    background: var(--primary-hover);
+    background: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
   }
 }
 
+/* ── Responsive ── */
 @media (max-width: 480px) {
   .modal-content {
-    padding: 24px;
+    padding: 24px 20px;
     border-radius: 16px;
   }
 
   .modal-icon i {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .modal-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
+  }
+
+  .check-circle,
+  .check-svg {
+    width: 64px;
+    height: 64px;
   }
 }
