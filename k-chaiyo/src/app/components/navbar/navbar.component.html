@@ -1,0 +1,41 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <a href="#" class="logo">
+      🛒 K Chaiyo<span class="logo-accent">?</span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" [class.open]="menuOpen">
+      <li><a href="#features" (click)="closeMenu()">Features</a></li>
+      <li><a href="#how-it-works" (click)="closeMenu()">How It Works</a></li>
+      <li><a href="#reviews" (click)="closeMenu()">Reviews</a></li>
+      <li><a href="#impact" (click)="closeMenu()">Impact</a></li>
+      <li class="nav-cta-mobile">
+        <a href="#get-started" class="btn-cta" (click)="closeMenu()">Suru Garum!</a>
+      </li>
+    </ul>
+
+    <!-- CTA Button (Desktop) -->
+    <a href="#get-started" class="btn-cta desktop-cta">Suru Garum!</a>
+
+    <!-- Mobile Hamburger -->
+    <button
+      class="hamburger"
+      [class.active]="menuOpen"
+      (click)="toggleMenu()"
+      aria-label="Toggle menu"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Overlay -->
+  <div
+    class="mobile-overlay"
+    [class.visible]="menuOpen"
+    (click)="closeMenu()"
+  ></div>
+</nav>

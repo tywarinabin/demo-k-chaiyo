@@ -1,0 +1,29 @@
+<section id="how-it-works" class="timeline-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Kasto Kaam Garcha?</span>
+      <h2 class="section-title">Sajilo 4 Steps Ma!</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-step" *ngFor="let step of steps; let i = index"
+           [class.step-right]="i % 2 !== 0"
+           [class.step-left]="i % 2 === 0">
+
+        <div class="timeline-number-circle">
+          <span>{{ step.number }}</span>
+        </div>
+
+        <div class="timeline-card">
+          <div class="step-icon-circle">
+            <span class="step-icon">{{ step.icon }}</span>
+          </div>
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="step-description">{{ step.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

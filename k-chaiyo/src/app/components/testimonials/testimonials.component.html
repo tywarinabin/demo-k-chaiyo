@@ -1,0 +1,25 @@
+<section id="testimonials" class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Manxhele K Bhanchan?</span>
+      <h2 class="section-title">Hamra Customers Ko Review</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <div class="quote-mark">"</div>
+        <p class="testimonial-quote">{{ testimonial.quote }}</p>
+        <div class="testimonial-rating">
+          <span class="star" *ngFor="let star of getStars(testimonial.rating)">&#9733;</span>
+        </div>
+        <div class="testimonial-author">
+          <div class="avatar">{{ testimonial.initials }}</div>
+          <div class="author-info">
+            <h4 class="author-name">{{ testimonial.name }}</h4>
+            <span class="author-location">{{ testimonial.location }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
