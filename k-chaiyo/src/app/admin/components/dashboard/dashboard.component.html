@@ -1,0 +1,252 @@
+<div class="dashboard">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="header-content">
+      <h1>Dashboard</h1>
+      <p>Overview of visitor tracking and form submissions</p>
+    </div>
+    <div class="header-actions">
+      <select [(ngModel)]="dateRange" (change)="onDateRangeChange()" class="date-range-select">
+        <option value="today">Today</option>
+        <option value="week">Last 7 Days</option>
+        <option value="month">Last 30 Days</option>
+      </select>
+      <button class="refresh-btn" (click)="refreshData()" [disabled]="isLoading">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" [class.spinning]="isLoading">
+          <polyline points="23 4 23 10 17 10"/>
+          <polyline points="1 20 1 14 7 14"/>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="isLoading && !analytics">
+    <div class="spinner"></div>
+    <p>Loading analytics...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-state" *ngIf="error && !analytics">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <p>{{ error }}</p>
+    <button class="retry-btn" (click)="refreshData()">Try Again</button>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div class="dashboard-content" *ngIf="analytics">
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Total Visits</div>
+          <div class="stat-value">{{ analytics.totalVisits | number }}</div>
+          <div class="stat-change positive">+12% from last period</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Unique Visitors</div>
+          <div class="stat-value">{{ analytics.uniqueVisitors | number }}</div>
+          <div class="stat-change positive">+8% from last period</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Submissions</div>
+          <div class="stat-value">{{ analytics.formSubmissions | number }}</div>
+          <div class="stat-change positive">+15% from last period</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 3v18h18"/>
+            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Conversion Rate</div>
+          <div class="stat-value">{{ analytics.conversionRate }}%</div>
+          <div class="stat-change positive">+0.3% from last period</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="charts-row">
+      <!-- Traffic Trend -->
+      <div class="chart-card">
+        <div class="card-header">
+          <h3>Traffic Trend</h3>
+          <p>Daily visits over the selected period</p>
+        </div>
+        <div class="chart-content">
+          <div class="bar-chart" *ngIf="analytics.dailyTrend.length > 0">
+            <div class="chart-bars">
+              <div
+                *ngFor="let day of analytics.dailyTrend"
+                class="bar-wrapper"
+              >
+                <div
+                  class="bar"
+                  [style.height.%]="getChartHeight(day.visits)"
+                  [title]="day.visits + ' visits'"
+                >
+                  <span class="bar-value">{{ day.visits }}</span>
+                </div>
+                <div class="bar-label">{{ formatDate(day.timestamp) }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="empty-state" *ngIf="analytics.dailyTrend.length === 0">
+            <p>No trend data available</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Sources -->
+      <div class="chart-card">
+        <div class="card-header">
+          <h3>Top Traffic Sources</h3>
+          <p>Where your visitors are coming from</p>
+        </div>
+        <div class="chart-content">
+          <div class="source-list" *ngIf="analytics.topSources.length > 0">
+            <div *ngFor="let source of analytics.topSources" class="source-item">
+              <div class="source-info">
+                <span class="source-icon">{{ getSourceIcon(source.source) }}</span>
+                <div class="source-details">
+                  <span class="source-name">{{ source.source }}</span>
+                  <span class="source-conversions">{{ source.conversions }} conversions</span>
+                </div>
+              </div>
+              <div class="source-stats">
+                <span class="source-visits">{{ source.visits | number }}</span>
+                <div class="source-bar">
+                  <div class="source-bar-fill" [style.width.%]="(source.visits / analytics.totalVisits) * 100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="empty-state" *ngIf="analytics.topSources.length === 0">
+            <p>No source data available</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="bottom-row">
+      <!-- Top Countries -->
+      <div class="chart-card">
+        <div class="card-header">
+          <h3>Top Countries</h3>
+          <p>Geographic distribution of visitors</p>
+        </div>
+        <div class="chart-content">
+          <div class="country-list" *ngIf="analytics.topCountries.length > 0">
+            <div *ngFor="let country of analytics.topCountries; let i = index" class="country-item">
+              <div class="country-rank">{{ i + 1 }}</div>
+              <div class="country-flag">{{ getCountryFlag(country.countryCode) }}</div>
+              <div class="country-info">
+                <span class="country-name">{{ country.country }}</span>
+                <span class="country-code">{{ country.countryCode }}</span>
+              </div>
+              <div class="country-visits">
+                <span>{{ country.visits | number }}</span>
+                <small>visits</small>
+              </div>
+            </div>
+          </div>
+          <div class="empty-state" *ngIf="analytics.topCountries.length === 0">
+            <p>No country data available</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="chart-card">
+        <div class="card-header">
+          <h3>Quick Actions</h3>
+          <p>Common tasks and navigation</p>
+        </div>
+        <div class="chart-content">
+          <div class="quick-actions">
+            <a routerLink="/admin/visitors" class="action-btn">
+              <div class="action-icon blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="action-content">
+                <span class="action-title">View All Visitors</span>
+                <span class="action-desc">Browse visitor logs with filters</span>
+              </div>
+            </a>
+
+            <a routerLink="/admin/submissions" class="action-btn">
+              <div class="action-icon purple">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </div>
+              <div class="action-content">
+                <span class="action-title">Manage Submissions</span>
+                <span class="action-desc">Review and respond to forms</span>
+              </div>
+            </a>
+
+            <button class="action-btn" (click)="refreshData()">
+              <div class="action-icon green">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 4 23 10 17 10"/>
+                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                </svg>
+              </div>
+              <div class="action-content">
+                <span class="action-title">Refresh Data</span>
+                <span class="action-desc">Update analytics to latest</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
