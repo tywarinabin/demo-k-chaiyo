@@ -4,6 +4,8 @@
 
 Secure, temporary backend service to track website visitors, analyze traffic sources, and handle form submissions for the K-Chaiyo landing page. Designed for public access with admin authentication for analytics.
 
+> **Related Documentation:** See [ADMIN-PANEL.md](./ADMIN-PANEL.md) for frontend admin panel features and usage guide.
+
 **Key Goals:**
 - Track visitor sources (organic, Facebook, referral links)
 - Store form submissions securely
