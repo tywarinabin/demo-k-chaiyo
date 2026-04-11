@@ -1,0 +1,249 @@
+<div class="submissions-page">
+  <div class="page-header">
+    <div>
+      <h1>Form Submissions</h1>
+      <p>Manage and respond to customer inquiries</p>
+    </div>
+    <button class="export-btn" (click)="exportData()" [disabled]="isLoading">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Export CSV
+    </button>
+  </div>
+
+  <div class="filters-bar">
+    <div class="filter-group">
+      <label>Status</label>
+      <select [(ngModel)]="filters.status" (change)="onFilterChange()">
+        <option *ngFor="let option of statusOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Per Page</label>
+      <select [(ngModel)]="filters.limit" (change)="onFilterChange()">
+        <option [value]="10">10</option>
+        <option [value]="20">20</option>
+        <option [value]="50">50</option>
+        <option [value]="100">100</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <div class="loading" *ngIf="isLoading">
+      <div class="spinner"></div>
+      <p>Loading submissions...</p>
+    </div>
+
+    <div class="error" *ngIf="error && !isLoading">
+      <p>{{ error }}</p>
+      <button (click)="loadSubmissions()">Retry</button>
+    </div>
+
+    <table class="data-table" *ngIf="!isLoading && submissions.length > 0">
+      <thead>
+        <tr>
+          <th>Submitted</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let submission of submissions">
+          <td class="date-cell">
+            {{ formatDate(submission.submittedAt) }}
+          </td>
+          <td class="name-cell">
+            <strong>{{ submission.fullName }}</strong>
+          </td>
+          <td class="email-cell">
+            {{ submission.email }}
+          </td>
+          <td>
+            <span class="category-badge">{{ submission.needsCategory || '-' }}</span>
+          </td>
+          <td>
+            <span class="status-badge" [ngClass]="getStatusClass(submission.status)">
+              {{ submission.status }}
+            </span>
+          </td>
+          <td>
+            <button class="view-btn" (click)="viewDetails(submission)">
+              View Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="empty-state" *ngIf="!isLoading && submissions.length === 0">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+      </svg>
+      <h3>No submissions found</h3>
+      <p>Try adjusting your filters</p>
+    </div>
+  </div>
+
+  <div class="pagination" *ngIf="pagination.totalPages > 1">
+    <button
+      class="pagination-btn"
+      (click)="onPageChange(pagination.page - 1)"
+      [disabled]="pagination.page === 1"
+    >
+      Previous
+    </button>
+
+    <div class="page-numbers">
+      <button
+        *ngFor="let page of getPageNumbers()"
+        class="page-number"
+        [class.active]="page === pagination.page"
+        (click)="onPageChange(page)"
+      >
+        {{ page }}
+      </button>
+    </div>
+
+    <button
+      class="pagination-btn"
+      (click)="onPageChange(pagination.page + 1)"
+      [disabled]="pagination.page === pagination.totalPages"
+    >
+      Next
+    </button>
+
+    <div class="pagination-info">
+      Page {{ pagination.page }} of {{ pagination.totalPages }} ({{ pagination.total }} total)
+    </div>
+  </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" *ngIf="showDetailModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()" *ngIf="selectedSubmission">
+    <div class="modal-header">
+      <h2>Submission Details</h2>
+      <button class="close-btn" (click)="closeModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="detail-section">
+        <div class="detail-row">
+          <label>Full Name</label>
+          <p>{{ selectedSubmission.fullName }}</p>
+        </div>
+
+        <div class="detail-row">
+          <label>Email</label>
+          <p>
+            <a [href]="'mailto:' + selectedSubmission.email">{{ selectedSubmission.email }}</a>
+          </p>
+        </div>
+
+        <div class="detail-row" *ngIf="selectedSubmission.phoneNumber">
+          <label>Phone Number</label>
+          <p>
+            <a [href]="'tel:' + selectedSubmission.phoneNumber">{{ selectedSubmission.phoneNumber }}</a>
+          </p>
+        </div>
+
+        <div class="detail-row" *ngIf="selectedSubmission.needsCategory">
+          <label>Category</label>
+          <p>{{ selectedSubmission.needsCategory }}</p>
+        </div>
+
+        <div class="detail-row" *ngIf="selectedSubmission.message">
+          <label>Message</label>
+          <p class="message-text">{{ selectedSubmission.message }}</p>
+        </div>
+
+        <div class="detail-row">
+          <label>Submitted At</label>
+          <p>{{ formatDate(selectedSubmission.submittedAt) }}</p>
+        </div>
+
+        <div class="detail-row">
+          <label>Current Status</label>
+          <p>
+            <span class="status-badge" [ngClass]="getStatusClass(selectedSubmission.status)">
+              {{ selectedSubmission.status }}
+            </span>
+          </p>
+        </div>
+
+        <div class="detail-row" *ngIf="selectedSubmission.notes">
+          <label>Notes</label>
+          <p class="notes-text">{{ selectedSubmission.notes }}</p>
+        </div>
+      </div>
+
+      <div class="status-actions">
+        <h3>Update Status</h3>
+        <div class="action-buttons">
+          <button
+            class="status-btn reviewed"
+            (click)="updateStatus('reviewed')"
+            [disabled]="isUpdating || selectedSubmission.status === 'reviewed'"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Mark as Reviewed
+          </button>
+
+          <button
+            class="status-btn contacted"
+            (click)="updateStatus('contacted')"
+            [disabled]="isUpdating || selectedSubmission.status === 'contacted'"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Mark as Contacted
+          </button>
+
+          <button
+            class="status-btn spam"
+            (click)="updateStatus('spam')"
+            [disabled]="isUpdating || selectedSubmission.status === 'spam'"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="15" y1="9" x2="9" y2="15"/>
+              <line x1="9" y1="9" x2="15" y2="15"/>
+            </svg>
+            Mark as Spam
+          </button>
+
+          <button
+            class="status-btn pending"
+            (click)="updateStatus('pending')"
+            [disabled]="isUpdating || selectedSubmission.status === 'pending'"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Mark as Pending
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
