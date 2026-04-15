@@ -8,10 +8,12 @@
   background: transparent;
 
   &.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 1px 12px rgba(124, 58, 237, 0.08);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 24px rgba(124, 58, 237, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 }
 
@@ -162,13 +164,17 @@
   border-radius: var(--radius);
   text-decoration: none;
   transition: var(--transition);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.25),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
 
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
     filter: brightness(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 }
 

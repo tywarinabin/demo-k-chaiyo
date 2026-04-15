@@ -132,8 +132,10 @@
   border-radius: var(--radius);
   text-decoration: none;
   transition: var(--transition);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.25),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
 
   i {
     font-size: 1.1rem;
@@ -141,8 +143,10 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
     filter: brightness(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 }
 
@@ -151,7 +155,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 2rem;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--secondary, #2563EB);
   font-weight: 600;
   font-size: 1rem;
@@ -159,14 +165,21 @@
   text-decoration: none;
   border: 2px solid var(--secondary, #2563EB);
   transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05),
+              inset 0 1px 1px rgba(255, 255, 255, 0.5);
 
   i {
     font-size: 1.1rem;
   }
 
   &:hover {
-    background: var(--secondary-light, #DBEAFE);
+    background: var(--secondary, #2563EB);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    color: #fff;
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -180,14 +193,17 @@
 .countdown-box {
   min-width: 70px;
   text-align: center;
-  background: white;
-  border: 1.5px solid var(--secondary-light, #DBEAFE);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
   border-radius: 12px;
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12),
+              inset 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .countdown-number {

@@ -47,39 +47,49 @@
   input {
     padding: 12px 20px;
     border-radius: 10px 0 0 10px;
-    border: 2px solid var(--primary);
+    border: 2px solid rgba(124, 58, 237, 0.3);
     min-width: 280px;
     font-size: 0.95rem;
     outline: none;
     color: var(--text-dark);
-    background: white;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: var(--transition);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8);
 
     &::placeholder {
       color: var(--text-muted);
     }
 
     &:focus {
-      border-color: var(--primary-dark);
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.15),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.9);
     }
   }
 
   button {
     padding: 12px 24px;
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
     color: white;
     border-radius: 0 10px 10px 0;
     font-weight: 600;
     font-size: 0.95rem;
-    border: 2px solid var(--primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition: var(--transition);
     white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.25),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
 
     &:hover {
-      background: var(--primary-hover);
-      border-color: var(--primary-hover);
+      background: linear-gradient(135deg, var(--primary-hover), var(--primary-dark));
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
     }
   }
 }

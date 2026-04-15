@@ -57,13 +57,16 @@
 }
 
 .feature-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 20px;
   padding: 40px 28px;
   text-align: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
+              inset 0 1px 2px rgba(255, 255, 255, 0.8);
   transition: var(--transition);
-  border: 1.5px solid #e0e0e8;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
   position: relative;
   overflow: hidden;
 
@@ -81,14 +84,32 @@
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.12);
+    box-shadow: 0 16px 48px rgba(37, 99, 235, 0.15),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.85);
   }
 
   // Accent border on hover
-  &.card-purple:hover { border-color: #7C3AED; }
-  &.card-blue:hover { border-color: #2563EB; }
-  &.card-cyan:hover { border-color: #06B6D4; }
-  &.card-green:hover { border-color: #059669; }
+  &.card-purple:hover {
+    border-color: rgba(124, 58, 237, 0.5);
+    box-shadow: 0 16px 48px rgba(124, 58, 237, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  }
+  &.card-blue:hover {
+    border-color: rgba(37, 99, 235, 0.5);
+    box-shadow: 0 16px 48px rgba(37, 99, 235, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  }
+  &.card-cyan:hover {
+    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 16px 48px rgba(6, 182, 212, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  }
+  &.card-green:hover {
+    border-color: rgba(5, 150, 105, 0.5);
+    box-shadow: 0 16px 48px rgba(5, 150, 105, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  }
 }
 
 .feature-icon-circle {

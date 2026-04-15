@@ -113,28 +113,44 @@
 }
 
 .btn-white {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--primary, #7C3AED);
-  border-color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15),
+              inset 0 1px 1px rgba(255, 255, 255, 0.8);
 
   &:hover {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     color: #ffffff;
-    border-color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.6);
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
   }
 }
 
 .btn-outline {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+              inset 0 1px 1px rgba(255, 255, 255, 0.3);
 
   &:hover {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     color: var(--primary, #7C3AED);
-    border-color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.6);
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8);
   }
 }
 

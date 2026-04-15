@@ -49,12 +49,17 @@
   height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   color: #ffffff;
   transition: var(--transition, all 0.3s ease);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
 
   i {
     font-size: 1.1rem;
@@ -62,7 +67,11 @@
 
   &:hover {
     background: var(--primary, #7C3AED);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-color: var(--primary, #7C3AED);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
   }
 }
 
