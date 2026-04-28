@@ -16,5 +16,12 @@
         <span class="coming-soon-tag" [ngClass]="'badge-' + cat.badgeStyle">{{ cat.tag }}</span>
       </div>
     </div>
+
+    <div class="view-more-wrap">
+      <a routerLink="/shop" class="view-more-btn" aria-label="Browse all categories">
+        <span>View More</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
   </div>
 </section>

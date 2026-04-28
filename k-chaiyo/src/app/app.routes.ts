@@ -2,6 +2,19 @@ import { Routes } from '@angular/router';
 import { authGuard, loginGuard } from './admin/guards/auth.guard';
 
 export const routes: Routes = [
+  // Landing page (default)
+  {
+    path: '',
+    loadComponent: () =>
+      import('./components/landing/landing.component').then(m => m.LandingComponent),
+    pathMatch: 'full'
+  },
+  // Shop page (Blinkit-style catalog)
+  {
+    path: 'shop',
+    loadComponent: () =>
+      import('./components/shop/shop.component').then(m => m.ShopComponent)
+  },
   // Admin routes
   {
     path: 'admin',
@@ -42,10 +55,9 @@ export const routes: Routes = [
       }
     ]
   },
-  // Default redirect
+  // Fallback — send unknown URLs back to the landing page
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    path: '**',
+    redirectTo: ''
   }
 ];
