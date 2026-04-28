@@ -33,7 +33,6 @@ import { ShopCategory } from '../../../shared/models/product.model';
               "
               [attr.aria-current]="isActive(cat.id) ? 'true' : null"
             >
-              <i [class]="cat.icon" class="text-[12px]"></i>
               {{ cat.name }}
             </button>
           </li>
@@ -41,9 +40,9 @@ import { ShopCategory } from '../../../shared/models/product.model';
       </ul>
     </nav>
 
-    <!-- Desktop: vertical rail (Sticky within scrollable area) -->
+    <!-- Desktop: vertical rail -->
     <aside
-      class="hidden md:flex flex-col w-[104px] lg:w-[120px] shrink-0 bg-white border-r border-gray-200 font-poppins sticky top-0 h-screen overflow-y-auto scrollbar-thin"
+      class="hidden md:flex flex-col w-[104px] lg:w-[120px] shrink-0 bg-white border-r border-gray-200 font-poppins"
       aria-label="Categories"
     >
       <ul class="flex flex-col py-2">
@@ -69,7 +68,7 @@ import { ShopCategory } from '../../../shared/models/product.model';
               }
               <span
                 [ngClass]="[
-                  'flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl text-xl transition-all duration-200',
+                  'flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl text-xl transition-all duration-200 font-semibold',
                   isActive(cat.id)
                     ? 'text-white shadow-[0_6px_16px_rgba(124,58,237,0.3)] scale-105'
                     : 'bg-shop-bg text-shop-mutedText'
@@ -80,7 +79,7 @@ import { ShopCategory } from '../../../shared/models/product.model';
                     : null
                 "
               >
-                <i [class]="cat.icon"></i>
+                {{ cat.name.charAt(0) }}
               </span>
               <span
                 [ngClass]="[

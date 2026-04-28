@@ -6,6 +6,7 @@ import { ShopInfoComponent } from './shop-info/shop-info.component';
 import { ShopCartDrawerComponent } from './shop-cart-drawer/shop-cart-drawer.component';
 import { ShopAuthModalComponent } from './shop-auth-modal/shop-auth-modal.component';
 import { ShopOrderSuccessComponent } from './shop-order-success/shop-order-success.component';
+import { ShopFooterComponent } from './shop-footer/shop-footer.component';
 
 @Component({
   selector: 'app-shop',
@@ -17,7 +18,8 @@ import { ShopOrderSuccessComponent } from './shop-order-success/shop-order-succe
     ShopInfoComponent,
     ShopCartDrawerComponent,
     ShopAuthModalComponent,
-    ShopOrderSuccessComponent
+    ShopOrderSuccessComponent,
+    ShopFooterComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -25,15 +27,22 @@ import { ShopOrderSuccessComponent } from './shop-order-success/shop-order-succe
       <!-- Fixed Header (stays at top, never moves) -->
       <app-shop-header class="fixed top-0 left-0 right-0 h-[60px] sm:h-[72px] z-50" />
       
-      <!-- Main Layout: Sidebar + Content (takes remaining space below header) -->
-      <div class="flex-1 flex flex-col md:flex-row mt-[60px] sm:mt-[72px] bg-white overflow-hidden">
-        <!-- Sidebar: Horizontal on mobile (md:hidden), Vertical on desktop -->
-        <app-shop-sidebar />
-        
-        <!-- Scrollable Content Area -->
-        <div class="flex-1 min-w-0 flex flex-col overflow-y-auto">
-          <app-shop-product-grid class="flex-1" />
-          <app-shop-info />
+      <!-- Main Layout: Single scrollable area -->
+      <div class="flex-1 overflow-y-auto">
+        <div class="flex flex-col min-h-full pt-[60px] sm:pt-[72px]">
+          <!-- Sidebar + Content Row -->
+          <div class="flex flex-col md:flex-row">
+            <!-- Sidebar -->
+            <app-shop-sidebar />
+            
+            <!-- Content Area -->
+            <div class="flex-1 min-w-0 flex flex-col">
+              <app-shop-product-grid />
+            </div>
+          </div>
+          
+          <!-- Full Width Footer -->
+          <app-shop-footer />
         </div>
       </div>
       
