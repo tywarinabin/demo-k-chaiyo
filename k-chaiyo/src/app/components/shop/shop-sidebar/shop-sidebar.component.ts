@@ -9,9 +9,9 @@ import { ShopCategory } from '../../../shared/models/product.model';
   imports: [NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <!-- Mobile: horizontal chip strip -->
+    <!-- Mobile: horizontal chip strip (sticks at top of content) -->
     <nav
-      class="md:hidden sticky top-[96px] z-20 bg-white border-b border-gray-200 overflow-x-auto scrollbar-hide font-poppins"
+      class="md:hidden w-full sticky top-0 z-20 bg-white border-b border-gray-200 overflow-x-auto scrollbar-hide font-poppins shrink-0"
       aria-label="Categories"
     >
       <ul class="flex gap-2 px-3 py-2.5 min-w-max">
@@ -41,9 +41,9 @@ import { ShopCategory } from '../../../shared/models/product.model';
       </ul>
     </nav>
 
-    <!-- Desktop: vertical rail -->
+    <!-- Desktop: vertical rail (Sticky within scrollable area) -->
     <aside
-      class="hidden md:flex flex-col w-[104px] lg:w-[120px] shrink-0 bg-white border-r border-gray-200 overflow-y-auto scrollbar-thin font-poppins max-h-[calc(100vh-72px)] sticky top-[72px] self-start"
+      class="hidden md:flex flex-col w-[104px] lg:w-[120px] shrink-0 bg-white border-r border-gray-200 font-poppins sticky top-0 h-screen overflow-y-auto scrollbar-thin"
       aria-label="Categories"
     >
       <ul class="flex flex-col py-2">

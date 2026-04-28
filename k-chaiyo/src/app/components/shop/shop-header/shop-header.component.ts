@@ -20,25 +20,25 @@ import { AuthService } from '../../../services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header
-      class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 font-poppins animate-fade-in"
+      class="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 font-poppins animate-fade-in"
     >
       <div
-        class="w-full px-3 sm:px-6 lg:px-10 xl:px-14 py-3 flex items-center gap-2 sm:gap-4 md:gap-6"
+        class="w-full px-2 sm:px-6 lg:px-10 xl:px-14 py-2 sm:py-3 flex items-center gap-1.5 sm:gap-4 md:gap-6"
       >
         <!-- Brand: logo + wordmark -->
         <a
           routerLink="/"
-          class="flex items-center gap-2.5 shrink-0 transition-transform hover:scale-[1.02]"
+          class="flex items-center gap-1.5 sm:gap-2.5 shrink-0 transition-transform hover:scale-[1.02]"
           aria-label="K Chaiyo home"
         >
           <span
-            class="relative inline-flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-xl shadow-[0_6px_16px_rgba(124,58,237,0.35)]"
+            class="relative inline-flex h-8 w-8 sm:h-10 sm:w-10 md:h-11 md:w-11 items-center justify-center rounded-xl shadow-[0_6px_16px_rgba(124,58,237,0.35)]"
             style="background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%);"
             aria-hidden="true"
           >
             <svg
               viewBox="0 0 32 32"
-              class="h-6 w-6 md:h-7 md:w-7 text-white drop-shadow"
+              class="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white drop-shadow"
               fill="none"
               stroke="currentColor"
               stroke-width="2.2"
@@ -51,23 +51,23 @@ import { AuthService } from '../../../services/auth.service';
               <path d="M16 5c.8 1.2.8 2.5 0 3.7s-.8 2.5 0 3.7" />
             </svg>
             <span
-              class="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-white text-brand-primary text-[10px] font-black flex items-center justify-center shadow-sm"
+              class="absolute -bottom-1 -right-1 h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-white text-brand-primary text-[8px] sm:text-[10px] font-black flex items-center justify-center shadow-sm"
             >
               ?
             </span>
           </span>
 
           <span class="flex flex-col leading-none">
-            <span class="text-[11px] font-semibold tracking-[0.22em] uppercase text-shop-mutedText -mb-0.5 hidden sm:block">
+            <span class="text-[9px] sm:text-[11px] font-semibold tracking-[0.22em] uppercase text-shop-mutedText -mb-0.5 hidden sm:block">
               Nepal's
             </span>
             <span class="flex items-baseline gap-0.5">
               <span
-                class="text-xl md:text-[1.55rem] font-extrabold tracking-tight bg-gradient-to-r from-brand-primary via-[#6D5AE8] to-brand-secondary bg-clip-text text-transparent"
+                class="text-sm sm:text-xl md:text-[1.55rem] font-extrabold tracking-tight bg-gradient-to-r from-brand-primary via-[#6D5AE8] to-brand-secondary bg-clip-text text-transparent"
               >
                 K Chaiyo
               </span>
-              <span class="text-xl md:text-[1.55rem] font-black text-brand-secondary">?</span>
+              <span class="text-sm sm:text-xl md:text-[1.55rem] font-black text-brand-secondary">?</span>
             </span>
           </span>
         </a>
@@ -107,7 +107,7 @@ import { AuthService } from '../../../services/auth.service';
               (focus)="focused.set(true)"
               (blur)="focused.set(false)"
               [placeholder]="placeholder()"
-              class="w-full bg-transparent pl-10 pr-3 py-2.5 sm:py-3 text-[13px] sm:text-sm text-shop-text placeholder:text-shop-mutedText outline-none transition-all"
+              class="w-full bg-transparent pl-10 pr-3 py-2 sm:py-3 text-xs sm:text-sm text-shop-text placeholder:text-shop-mutedText outline-none transition-all"
             />
             @if (query) {
               <button
@@ -119,10 +119,6 @@ import { AuthService } from '../../../services/auth.service';
                 <i class="fas fa-xmark text-xs"></i>
               </button>
             }
-            <span
-              class="pointer-events-none absolute inset-x-0 -bottom-px h-0.5 origin-left scale-x-0 bg-gradient-to-r from-brand-primary to-brand-secondary transition-transform duration-300 group-focus-within:scale-x-100"
-              aria-hidden="true"
-            ></span>
           </label>
         </div>
 
@@ -209,13 +205,13 @@ import { AuthService } from '../../../services/auth.service';
 
       <!-- Mobile delivery strip -->
       <div
-        class="lg:hidden px-3 sm:px-6 pb-2.5 -mt-1 flex items-center gap-2 text-[11px] text-shop-mutedText"
+        class="lg:hidden px-2 sm:px-6 pb-1.5 sm:pb-2.5 -mt-0.5 sm:-mt-1 flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[11px] text-shop-mutedText"
       >
-        <i class="fas fa-bolt text-brand-primary"></i>
-        <span class="font-semibold text-shop-text">Delivery in 22 min</span>
-        <span class="opacity-50">•</span>
-        <i class="fas fa-location-dot text-brand-primary"></i>
-        <span class="truncate">HATTIBAN, Mitrapur</span>
+        <i class="fas fa-bolt text-brand-primary text-[10px] sm:text-base"></i>
+        <span class="font-semibold text-shop-text hidden xs:inline">Delivery in 22 min</span>
+        <span class="opacity-50 hidden xs:inline">•</span>
+        <i class="fas fa-location-dot text-brand-primary text-[10px] sm:text-base"></i>
+        <span class="truncate text-[8px] sm:text-[11px]">HATTIBAN</span>
       </div>
     </header>
   `
