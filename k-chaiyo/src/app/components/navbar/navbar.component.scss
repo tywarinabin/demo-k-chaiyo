@@ -113,13 +113,6 @@
     font-size: 0.95rem;
     position: relative;
     transition: var(--transition);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-
-    i {
-      font-size: 0.85rem;
-    }
 
     &::after {
       content: '';
@@ -153,9 +146,6 @@
 
 /* -- CTA Button -- */
 .btn-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
   padding: 0.6rem 1.5rem;
   background: linear-gradient(135deg, var(--primary), var(--secondary, #2563EB));
   color: #fff;
