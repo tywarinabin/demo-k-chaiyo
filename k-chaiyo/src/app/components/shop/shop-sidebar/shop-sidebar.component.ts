@@ -41,19 +41,19 @@ import { ShopCategory } from '../../../shared/models/product.model';
       </ul>
     </nav>
 
-    <!-- Desktop: vertical rail (Sticky within scrollable area) -->
+    <!-- Desktop: compact vertical rail (sticky in the outer scroll container) -->
     <aside
-      class="hidden md:flex flex-col w-[104px] lg:w-[120px] shrink-0 bg-white border-r border-gray-200 font-poppins sticky top-0 h-screen overflow-y-auto scrollbar-thin"
+      class="hidden md:flex flex-col w-[80px] lg:w-[88px] shrink-0 bg-white border-r border-gray-200 font-poppins sticky top-0 self-start h-[calc(100vh-60px)] sm:h-[calc(100vh-72px)] overflow-y-auto scrollbar-thin"
       aria-label="Categories"
     >
-      <ul class="flex flex-col py-2">
+      <ul class="flex flex-col py-1">
         @for (cat of categories; track cat.id) {
           <li>
             <button
               type="button"
               (click)="selectCategory(cat.id)"
               [ngClass]="[
-                'relative w-full flex flex-col items-center justify-center gap-2 px-2 py-4 text-center transition-colors duration-200',
+                'relative w-full flex flex-col items-center justify-center gap-1.5 px-1.5 py-3 text-center transition-colors duration-200',
                 isActive(cat.id)
                   ? 'bg-gradient-to-r from-brand-primary/10 to-brand-secondary/10'
                   : 'hover:bg-shop-bg'
@@ -62,16 +62,16 @@ import { ShopCategory } from '../../../shared/models/product.model';
             >
               @if (isActive(cat.id)) {
                 <span
-                  class="absolute left-0 top-0 bottom-0 w-1 rounded-r"
+                  class="absolute left-0 top-0 bottom-0 w-[3px] rounded-r"
                   style="background: linear-gradient(180deg, #7C3AED, #2563EB);"
                   aria-hidden="true"
                 ></span>
               }
               <span
                 [ngClass]="[
-                  'flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl text-xl transition-all duration-200',
+                  'flex h-10 w-10 items-center justify-center rounded-xl text-lg transition-all duration-200',
                   isActive(cat.id)
-                    ? 'text-white shadow-[0_6px_16px_rgba(124,58,237,0.3)] scale-105'
+                    ? 'text-white shadow-[0_4px_12px_rgba(124,58,237,0.3)] scale-105'
                     : 'bg-shop-bg text-shop-mutedText'
                 ]"
                 [style.background]="
@@ -84,7 +84,7 @@ import { ShopCategory } from '../../../shared/models/product.model';
               </span>
               <span
                 [ngClass]="[
-                  'text-[11px] lg:text-xs leading-tight line-clamp-2',
+                  'text-[10px] leading-tight line-clamp-2 w-full px-0.5',
                   isActive(cat.id) ? 'font-semibold text-shop-text' : 'text-shop-mutedText'
                 ]"
               >

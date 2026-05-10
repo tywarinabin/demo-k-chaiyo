@@ -22,21 +22,23 @@ import { ShopOrderSuccessComponent } from './shop-order-success/shop-order-succe
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="h-screen flex flex-col bg-shop-bg font-poppins">
-      <!-- Fixed Header (stays at top, never moves) -->
+      <!-- Fixed Header -->
       <app-shop-header class="fixed top-0 left-0 right-0 h-[60px] sm:h-[72px] z-50" />
-      
-      <!-- Main Layout: Sidebar + Content (takes remaining space below header) -->
-      <div class="flex-1 flex flex-col md:flex-row mt-[60px] sm:mt-[72px] bg-white overflow-hidden">
-        <!-- Sidebar: Horizontal on mobile (md:hidden), Vertical on desktop -->
-        <app-shop-sidebar />
-        
-        <!-- Scrollable Content Area -->
-        <div class="flex-1 min-w-0 flex flex-col overflow-y-auto">
-          <app-shop-product-grid class="flex-1" />
-          <app-shop-info />
+
+      <!-- Single scrollable body — sidebar+grid row, then full-width footer -->
+      <div class="flex-1 overflow-y-auto mt-[60px] sm:mt-[72px]">
+
+        <!-- Sidebar + Product Grid row -->
+        <div class="flex flex-col md:flex-row bg-white">
+          <app-shop-sidebar />
+          <app-shop-product-grid class="flex-1 min-w-0" />
         </div>
+
+        <!-- Footer: full viewport width, below both sidebar and grid -->
+        <app-shop-info />
+
       </div>
-      
+
       <app-shop-cart-drawer />
       <app-shop-auth-modal />
       <app-shop-order-success />
